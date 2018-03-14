@@ -1,0 +1,59 @@
+{
+    "name": "bhittani/repository",
+    "description": "Fluent storage repository with dot notated key support",
+    "keywords": ["configuration", "storage", "repository", "fluent", "dot-notation"],
+    "homepage": "https://github.com/kamalkhan/repository",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kamal Khan",
+            "email": "shout@bhittani.com",
+            "homepage": "http://bhittani.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/kamalkhan/repository/issues"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bhittani\\Repository\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bhittani\\Repository\\": "tests"
+        }
+    },
+	"extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+	},
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "platform": {
+            "php": "5.5.9"
+        }
+    },
+    "require": {
+        "php": ">=5.5,<8.0-DEV"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8",
+        "squizlabs/php_codesniffer": "^3.2"
+    },
+    "scripts": {
+        "test": "phpunit --colors=always",
+        "coverage": "phpunit --colors=always --coverage-text",
+        "coverage-html": "phpunit --colors=always --coverage-html coverage",
+        "coverage-clover": "phpunit --colors=always --coverage-clover coverage.xml",
+        "cs-check": "phpcs --standard=PSR2 src",
+        "cs-fix": "phpcbf --standard=PSR2 src",
+        "check": ["@cs-check", "@test"]
+    },
+    "repositories": [
+        { "packagist": false },
+        { "type": "composer", "url": "https://packagist.org" }
+    ]
+}
