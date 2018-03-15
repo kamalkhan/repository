@@ -23,7 +23,8 @@ interface RepositoryInterface extends \ArrayAccess
     /**
      * Determine if the given key exists.
      *
-     * @param  string $key
+     * @param string $key
+     *
      * @return bool
      */
     public function has($key);
@@ -72,7 +73,7 @@ interface RepositoryInterface extends \ArrayAccess
      * Increment a value.
      *
      * @param string $key
-     * @param mixed  $step
+     * @param int    $step
      */
     public function increment($key, $step = 1);
 
@@ -80,7 +81,7 @@ interface RepositoryInterface extends \ArrayAccess
      * Decrement a value.
      *
      * @param string $key
-     * @param mixed  $step
+     * @param int    $step
      */
     public function decrement($key, $step = 1);
 }

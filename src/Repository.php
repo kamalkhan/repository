@@ -69,8 +69,6 @@ class Repository implements RepositoryInterface
     {
         $items = $this->setter($key, $value);
         $this->items = array_replace_recursive($this->items, $items);
-
-        return $this;
     }
 
     /**
@@ -180,8 +178,9 @@ class Repository implements RepositoryInterface
     /**
      * Recursive set a key value.
      *
-     * @param  string $key
-     * @param  mixed  $value
+     * @param string $key
+     * @param mixed  $value
+     *
      * @return array
      */
     protected function setter($key, $value)
@@ -189,7 +188,7 @@ class Repository implements RepositoryInterface
         $keys = explode('.', $key);
         $key = array_shift($keys);
 
-        if (0 == count($keys)) {
+        if (! $keys) {
             return [$key => $value];
         }
 
@@ -199,8 +198,9 @@ class Repository implements RepositoryInterface
     /**
      * Resolve a dot notated key.
      *
-     * @param  string $key
-     * @param  bool   $found
+     * @param string $key
+     * @param bool   $found
+     *
      * @return mixed
      */
     protected function resolve($key, &$found = null)

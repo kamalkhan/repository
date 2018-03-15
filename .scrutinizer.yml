@@ -17,7 +17,7 @@ build:
             tests:
                 override:
                     -
-                        command: composer ci
+                        command: composer coverage-clover
                         coverage:
                             file: coverage.xml
                             format: php-clover

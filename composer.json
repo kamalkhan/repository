@@ -31,20 +31,24 @@
 	},
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "config": {
+        "platform": {
+            "php": "5.5.9"
+        }
+    },
     "require": {
         "php": ">=5.5,<8.0-DEV"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
-        "symplify/easy-coding-standard": "2.5"
+        "friendsofphp/php-cs-fixer": "^2.2"
     },
     "scripts": {
         "test": "phpunit --colors=always",
-        "test-with-coverage": "phpunit --colors=always --coverage-clover coverage.xml",
-        "cs-check": "vendor/bin/ecs check src --config ecs.neon",
-        "cs-fix": "vendor/bin/ecs check src --config ecs.neon --fix",
-        "check": ["@cs-check", "@test"],
-        "ci": ["@cs-check", "test-with-coverage"]
+        "coverage-clover": "phpunit --colors=always --coverage-clover coverage.xml",
+        "cs-check": "php-cs-fixer fix --dry-run --using-cache=no",
+        "cs-fix": "php-cs-fixer fix --using-cache=no",
+        "check": ["@cs-check", "@test"]
     },
     "repositories": [
         { "packagist": false },
