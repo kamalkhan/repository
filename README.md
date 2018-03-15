@@ -156,10 +156,10 @@ The MIT License (MIT). Please see the [License File](LICENSE.md) for more inform
 [icon-status]: https://img.shields.io/travis/kamalkhan/repository.svg?style=flat-square
 [link-status]: https://travis-ci.org/kamalkhan/repository
 <!--Coverage-->
-[icon-coverage]: https://api.codacy.com/project/badge/Coverage/<key>
+[icon-coverage]: https://api.codacy.com/project/badge/Coverage/ae5ab63e9eb54cd996cbd0a1efadfe58
 [link-coverage]: https://www.codacy.com/app/kamalkhan/repository
 <!--Grade-->
-[icon-grade]: https://api.codacy.com/project/badge/Grade/<key>
+[icon-grade]: https://api.codacy.com/project/badge/Grade/ae5ab63e9eb54cd996cbd0a1efadfe58
 [link-grade]: https://www.codacy.com/app/kamalkhan/repository
 <!--Downloads-->
 [icon-downloads]: https://img.shields.io/packagist/dt/bhittani/repository.svg?style=flat-square
