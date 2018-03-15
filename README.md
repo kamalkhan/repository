@@ -20,9 +20,6 @@ $ composer require bhittani/repository
 
 This package provides a fluent and intuitive storage repository.
 
-- `set(string $key, mixed $value): void`
-- `get(string $key, mixed $default = null): mixed`
-
 ```php
 <?php
 
@@ -32,34 +29,98 @@ use Bhittani\Repository\Repository;
 
 $storage = new Repository;
 
+// See below examples for usage...
+```
+
+### Store and retrieve values
+
+```php
+// Store and retrieve a value.
 $storage->set('foo', 'bar');
 echo $storage->get('foo'); // 'bar'
 
-// Store an array and receive a value using dot notated key access.
+// Store an array and retrieve a value using dot notated key access.
 $storage->set('app', ['name' => 'Acme', 'version' => '0.1.0']);
 echo $storage->get('app.version'); // '0.1.0'
 
 // Store a value using dot notated keys.
 $storage->set('db.sqlite.path' => ':memory:');
 $storage->set('db.sqlite.prefix' => 'acme_');
-echo $storage->get('db.sqlite'); // ['path' => ':memory:', 'prefix' => 'acme_']
+var_dump($storage->get('db.sqlite')); // ['path' => ':memory:', 'prefix' => 'acme_']
+```
 
-// Check whether a key exists.
-var_dump($storage->has('bar')); // (bool) false
+### Preset an undefined key
 
-// Accessing a key that is not set, will return null.
-echo $storage->get('bar'); // null
-
-// Fallback to a default value if the accessed key isn't set.
-echo $storage->get('bar', 'fallback'); // 'fallback'
-
-// Preset a value if the key isn't already set.
+```php
 $storage->preset('a', 'b');
 echo $storage->get('a'); // 'b'
 
 $storage->set('x', 'y');
 $storage->preset('x', 'z');
 echo $storage->get('x'); // 'y'
+```
+
+### Append a value
+
+```php
+$storage->set('append' => ['foo']);
+$storage->append('append', 'bar');
+var_dump($storage->get('append')); // ['foo', 'bar']
+```
+
+### Prepend a value
+
+```php
+$storage->set('prepend' => ['foo']);
+$storage->append('prepend', 'bar');
+var_dump($storage->get('prepend')); // ['bar', 'foo]
+```
+
+### Increment a value
+
+```php
+echo $storage->get('incr); // null
+
+$storage->increment('incr');
+echo $storage->get('incr'); // 1
+
+$storage->increment('incr', 5);
+echo $storage->get('incr'); // 6
+```
+
+### Decrement a value
+
+```php
+echo $storage->get('decr); // null
+
+$storage->increment('decr');
+echo $storage->get('decr'); // -1
+
+$storage->increment('decr', 5);
+echo $storage->get('decr'); // -6
+```
+
+### Fallback to a default value
+
+```php
+echo $storage->get('bar'); // null
+
+echo $storage->get('bar', 'fallback'); // 'fallback'
+```
+
+### Check whether a key is set
+
+```php
+var_dump($storage->has('bar')); // (bool) false
+```
+
+### Get all items
+
+```php
+$storage->add('foo', 'bar');
+$storage->add('beep.boop', 'baz');
+
+var_dump($storage->all()); // ['foo' => 'bar', 'beep' => ['boop' => 'baz']]
 ```
 
 ## Changelog

@@ -67,4 +67,20 @@ interface RepositoryInterface extends \ArrayAccess
      * @param mixed  $value
      */
     public function prepend($key, $value);
+
+    /**
+     * Increment a value.
+     *
+     * @param string $key
+     * @param mixed  $step
+     */
+    public function increment($key, $step = 1);
+
+    /**
+     * Decrement a value.
+     *
+     * @param string $key
+     * @param mixed  $step
+     */
+    public function decrement($key, $step = 1);
 }

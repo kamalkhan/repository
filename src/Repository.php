@@ -104,6 +104,22 @@ class Repository implements RepositoryInterface
     /**
      * {@inheritdoc}
      */
+    public function increment($key, $step = 1)
+    {
+        return $this[$key] += $step;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function decrement($key, $step = 1)
+    {
+        return $this[$key] -= $step;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function offsetSet($offset, $value)
     {
         $this->set($offset, $value);

@@ -182,4 +182,62 @@ class RepositoryTest extends \PHPUnit_Framework_TestCase
         $this->repo->prepend('one', 'foo');
         $this->assertEquals(['foo', 'one_value'], $this->repo->get('one'));
     }
+
+    /** @test */
+    public function it_increments_a_value()
+    {
+        $this->repo->set('counter', 0);
+        $this->repo->increment('counter');
+        $this->assertEquals(1, $this->repo->get('counter'));
+        $this->repo->increment('counter');
+        $this->assertEquals(2, $this->repo->get('counter'));
+    }
+
+    /** @test */
+    public function it_increments_a_value_if_key_isnt_set()
+    {
+        $this->assertFalse($this->repo->has('counter'));
+        $this->repo->increment('counter');
+        $this->assertEquals(1, $this->repo->get('counter'));
+        $this->repo->increment('counter');
+        $this->assertEquals(2, $this->repo->get('counter'));
+    }
+
+    /** @test */
+    public function it_increments_a_value_by_a_given_step_size()
+    {
+        $this->repo->increment('counter', 5);
+        $this->assertEquals(5, $this->repo->get('counter'));
+        $this->repo->increment('counter', 2);
+        $this->assertEquals(7, $this->repo->get('counter'));
+    }
+
+    /** @test */
+    public function it_decrements_a_value()
+    {
+        $this->repo->set('counter', 0);
+        $this->repo->decrement('counter');
+        $this->assertEquals(-1, $this->repo->get('counter'));
+        $this->repo->decrement('counter');
+        $this->assertEquals(-2, $this->repo->get('counter'));
+    }
+
+    /** @test */
+    public function it_decrements_a_value_if_key_isnt_set()
+    {
+        $this->assertFalse($this->repo->has('counter'));
+        $this->repo->decrement('counter');
+        $this->assertEquals(-1, $this->repo->get('counter'));
+        $this->repo->decrement('counter');
+        $this->assertEquals(-2, $this->repo->get('counter'));
+    }
+
+    /** @test */
+    public function it_decrements_a_value_by_a_given_step_size()
+    {
+        $this->repo->decrement('counter', 5);
+        $this->assertEquals(-5, $this->repo->get('counter'));
+        $this->repo->decrement('counter', 2);
+        $this->assertEquals(-7, $this->repo->get('counter'));
+    }
 }
