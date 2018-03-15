@@ -1,0 +1,32 @@
+checks:
+    php: true
+
+filter:
+    excluded_paths:
+        - tests/*
+
+build:
+    tests:
+        override:
+            -
+                command: composer test
+    nodes:
+        php55:
+            environment:
+                php: 5.5
+            tests:
+                override:
+                    -
+                        command: composer ci
+                        coverage:
+                            file: coverage.xml
+                            format: php-clover
+        php56:
+            environment:
+                php: 5.6
+        php71:
+            environment:
+                php: 7.1
+        php72:
+            environment:
+                php: 7.2

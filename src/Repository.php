@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of bhittani/repository.
+ *
+ * (c) Kamal Khan <shout@bhittani.com>
+ *
+ * This source file is subject to the MIT license that
+ * is bundled with this source code in the file LICENSE.
+ */
+
 namespace Bhittani\Repository;
 
 class Repository implements RepositoryInterface
@@ -14,7 +23,7 @@ class Repository implements RepositoryInterface
     /**
      * Instantiate the repository with optional items.
      *
-     * @param  array  $items
+     * @param array $items
      */
     public function __construct(array $items = [])
     {
@@ -129,10 +138,9 @@ class Repository implements RepositoryInterface
     /**
      * Insert a value into an array item.
      *
-     * @param  string  $key
-     * @param  mixed  $value
-     * @param  bool  $prepend
-     * @return void
+     * @param string $key
+     * @param mixed  $value
+     * @param bool   $prepend
      */
     protected function insert($key, $value, $prepend = false)
     {
@@ -156,7 +164,7 @@ class Repository implements RepositoryInterface
     /**
      * Recursive set a key value.
      *
-     * @param  string  $key
+     * @param  string $key
      * @param  mixed  $value
      * @return array
      */
@@ -165,7 +173,7 @@ class Repository implements RepositoryInterface
         $keys = explode('.', $key);
         $key = array_shift($keys);
 
-        if (count($keys) == 0) {
+        if (0 == count($keys)) {
             return [$key => $value];
         }
 
@@ -175,11 +183,11 @@ class Repository implements RepositoryInterface
     /**
      * Resolve a dot notated key.
      *
-     * @param  string  $key
-     * @param  bool  $found
+     * @param  string $key
+     * @param  bool   $found
      * @return mixed
      */
-    protected function resolve($key, & $found = null)
+    protected function resolve($key, &$found = null)
     {
         $found = $found ?: false;
 
