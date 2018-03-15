@@ -93,10 +93,10 @@ echo $storage->get('incr'); // 6
 ```php
 echo $storage->get('decr); // null
 
-$storage->increment('decr');
+$storage->decerement('decr');
 echo $storage->get('decr'); // -1
 
-$storage->increment('decr', 5);
+$storage->decerement('decr', 5);
 echo $storage->get('decr'); // -6
 ```
 
