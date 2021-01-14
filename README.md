@@ -44,8 +44,8 @@ $storage->set('app', ['name' => 'Acme', 'version' => '0.1.0']);
 echo $storage->get('app.version'); // '0.1.0'
 
 // Store a value using dot notated keys.
-$storage->set('db.sqlite.path' => ':memory:');
-$storage->set('db.sqlite.prefix' => 'acme_');
+$storage->set('db.sqlite.path', ':memory:');
+$storage->set('db.sqlite.prefix', 'acme_');
 var_dump($storage->get('db.sqlite')); // ['path' => ':memory:', 'prefix' => 'acme_']
 ```
 
@@ -63,7 +63,7 @@ echo $storage->get('x'); // 'y'
 ### Append a value
 
 ```php
-$storage->set('append' => ['foo']);
+$storage->set('append', ['foo']);
 $storage->append('append', 'bar');
 var_dump($storage->get('append')); // ['foo', 'bar']
 ```
@@ -71,7 +71,7 @@ var_dump($storage->get('append')); // ['foo', 'bar']
 ### Prepend a value
 
 ```php
-$storage->set('prepend' => ['foo']);
+$storage->set('prepend', ['foo']);
 $storage->append('prepend', 'bar');
 var_dump($storage->get('prepend')); // ['bar', 'foo]
 ```
@@ -79,7 +79,7 @@ var_dump($storage->get('prepend')); // ['bar', 'foo]
 ### Increment a value
 
 ```php
-echo $storage->get('incr); // null
+echo $storage->get('incr'); // null
 
 $storage->increment('incr');
 echo $storage->get('incr'); // 1
@@ -91,7 +91,7 @@ echo $storage->get('incr'); // 6
 ### Decrement a value
 
 ```php
-echo $storage->get('decr); // null
+echo $storage->get('decr'); // null
 
 $storage->decerement('decr');
 echo $storage->get('decr'); // -1
@@ -131,6 +131,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed.
 
 ```shell
 $ git clone https://github.com/kamalkhan/repository
+$ cd repository
 $ composer install
 $ composer test
 ```
